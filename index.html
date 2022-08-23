@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/form.css" />
     <title>Supabase Web App</title>
 </head>
 
@@ -26,6 +27,18 @@
     </header>
 
     <main>
+        <div class="form-div">
+            <form action="submit" id="add-item-form">
+                <h2 class="form-header">Add item to list</h2>
+                <label for="item-name">Item
+                <input type="text" required name="item-name">
+                </label>
+                <label for="quantity">Quantity
+                <input type="text" required name="quantity">
+                </label>
+                <button name="add-item">Add item</button>
+            </form>
+        </div>
 
         <div class="list-container">
             <h1 class="shopping-list">Shopping list</h1>
