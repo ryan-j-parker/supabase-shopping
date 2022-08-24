@@ -26,6 +26,7 @@ addForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const data = new FormData(addForm);
+    
     let list = {
         item: data.get('name'),
         quantity: data.get('quantity')

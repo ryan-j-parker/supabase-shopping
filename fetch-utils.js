@@ -43,7 +43,6 @@ export async function signOutUser() {
 }
 
 /* Data functions */
-
 export async function addListItem(item) {
     return await client.from('list').insert(item);
 }
