@@ -45,8 +45,9 @@ export async function signOutUser() {
 /* Data functions */
 
 export async function addListItem(item) {
-    const response = await client.from('list').insert({ item: item, bought: false, user_id: client.auth.user().id }).single();
-    return checkError(response);
+    // const response = await client.from('list').insert({ item: item, bought: false, user_id: client.auth.user().id }).single();
+    // return checkError(response);
+    return await client.from('list').insert(item);
 }
 
 export async function getShoppingList() {

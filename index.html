@@ -27,11 +27,14 @@
     </header>
 
     <main>
+        <div class="delete">
+            <button id="delete-btn">Delete list</button>
+        </div>
         <div class="form-div">
-            <form action="submit" id="add-item-form">
+            <form id="add-form" name="add-form">
                 <h2 class="form-header">Add item to list</h2>
                 <label for="item-name">Item
-                <input type="text" required name="item-name">
+                <input type="text" required name="name">
                 </label>
                 <label for="quantity">Quantity
                 <input type="text" required name="quantity">
@@ -40,6 +43,17 @@
             </form>
         </div>
 
+        <div class="list-items">
+            <div class="item-example">
+                <h2 class="example-name">Rabbit slices</h2>
+                <p class="example-quantity">453</p>
+            </div>
+        </div>
+
+        <div class="list-items" id="list-items">
+
+        </div>
+<!-- 
         <div class="list-container">
             <h1 class="shopping-list">Shopping list</h1>
             <button class="delete-list"></button>
@@ -49,7 +63,7 @@
                 <button class="bought"></button>
                 <button class="delete"></button>
             </div>
-        </div>
+        </div> -->
 
     </main>
 

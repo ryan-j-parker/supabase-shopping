@@ -2,7 +2,7 @@
 // working with supabase:
 import { checkAuth, signOutUser, addListItem, deleteShoppingList, markItemBought, getShoppingList } from './fetch-utils.js';
 // pure rendering (data --> DOM):
-import { renderList } from './render-utils.js';
+import { renderItem } from './render-utils.js';
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
 checkAuth();
@@ -15,21 +15,78 @@ signOutLink.addEventListener('click', signOutUser);
 /* end "boiler plate auth code" */
 
 // grab needed DOM elements on page:
-const addItemForm = document.getElementById('add-item-form');
+const addForm = document.getElementById('add-form');
+const listItemsDiv = document.getElementById('list-items');
+const deleteBtn = document.getElementById('delete-btn');
 // local state:
-let listItems = [];
-// display functions:
 
-// events:
-addItemForm.addEventListener('submit', async (e) => {
-    e.preventDefault;
-    const data = new FormData(addItemForm);
-    const itemName = data.get('item-name');
-    const quantity = data.get('quantity');
+let groceryList = [];
 
-    await addListItem(itemName, quantity);
+addForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const data = new FormData(addForm);
+    let list = {
+        item: data.get('name'),
+        quantity: data.get('quantity')
+    };
+
+    await addListItem(list);
+
+    displayList();
+    addForm.reset();
+});
+
+// // display functions:
+// async function handleBought(item) {
+//     await markItemBought(item.id);
+
+//     groceryList = await getShoppingList();
+//     displayList();
+// }
+
+// // events:
+// addItemForm.addEventListener('submit', async (e) => {
+//     e.preventDefault;
+//     const data = new FormData(addItemForm);
+
+//     let list = {
+//         item: data.get('item-name'),
+//         quantity: data.get('quantity'),
+//     };
+
+//     await addListItem(item);
+//     list = await getShoppingList();
+
+//     console.log('checking event listener', list);
+//     debugger;
+//     addItemForm.reset();
+//     displayList();
+// });
 
 
-    addItemForm.reset();
+async function displayList() {
+    // listItemsDiv.innerHTML = '';
+
+    for (let item of groceryList) {
+        const listItemEl = await renderItem(item);
+        console.log('display function is registered');
+        listItemsDiv.append(listItemEl);
+    }
+}
+
+    // groceryList = await getShoppingList();
+displayList();
+
+async function onLoad() {
+    groceryList = await getShoppingList();
+    displayList();
+}
+
+onLoad();
+
+deleteBtn.addEventListener('click', async () => {
+    await deleteShoppingList();
+    groceryList = [];
     displayList();
 });

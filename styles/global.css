@@ -9,6 +9,10 @@
     --action-color: rgb(77, 132, 252);
 }
 
+main {
+    background: url('/assets/grocery.jpg');
+}
+
 body {
     height: 100vh;
     font-family: 'Rubik', san-serif;
