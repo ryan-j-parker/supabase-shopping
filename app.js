@@ -18,8 +18,8 @@ signOutLink.addEventListener('click', signOutUser);
 const addForm = document.getElementById('add-form');
 const listItemsDiv = document.getElementById('list-items');
 const deleteBtn = document.getElementById('delete-btn');
-// local state:
 
+// local state:
 let groceryList = [];
 
 addForm.addEventListener('submit', async (event) => {
@@ -32,50 +32,29 @@ addForm.addEventListener('submit', async (event) => {
     };
 
     await addListItem(list);
+    groceryList = await getShoppingList();
 
     displayList();
     addForm.reset();
 });
 
-// // display functions:
-// async function handleBought(item) {
-//     await markItemBought(item.id);
+// display functions:
+async function handleBought(item) {
+    await markItemBought(item.id);
 
-//     groceryList = await getShoppingList();
-//     displayList();
-// }
-
-// // events:
-// addItemForm.addEventListener('submit', async (e) => {
-//     e.preventDefault;
-//     const data = new FormData(addItemForm);
-
-//     let list = {
-//         item: data.get('item-name'),
-//         quantity: data.get('quantity'),
-//     };
-
-//     await addListItem(item);
-//     list = await getShoppingList();
-
-//     console.log('checking event listener', list);
-//     debugger;
-//     addItemForm.reset();
-//     displayList();
-// });
-
+    groceryList = await getShoppingList();
+    displayList();
+}
 
 async function displayList() {
-    // listItemsDiv.innerHTML = '';
+    listItemsDiv.innerHTML = '';
 
     for (let item of groceryList) {
-        const listItemEl = await renderItem(item);
-        console.log('display function is registered');
+        const listItemEl = await renderItem(item, handleBought);
         listItemsDiv.append(listItemEl);
     }
 }
 
-    // groceryList = await getShoppingList();
 displayList();
 
 async function onLoad() {

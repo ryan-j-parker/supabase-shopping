@@ -11,6 +11,13 @@
 
 main {
     background: url('/assets/grocery.jpg');
+    object-fit: scale-down;
+    /* filter: blur(10px); */
+    
+}
+
+img {
+    filter: grayscale(100%);
 }
 
 body {
