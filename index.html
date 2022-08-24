@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/form.css" />
     <title>Supabase Web App</title>
 </head>
 
@@ -26,7 +27,26 @@
     </header>
 
     <main>
+        <div class="form-div">
+            <form id="add-form" name="add-form">
+                <h2 class="form-header">Shopping list</h2>
+                <label for="item-name">Item
+                <input type="text" required name="name">
+                </label>
+                <label for="quantity">Quantity
+                <input type="text" required name="quantity">
+                </label>
+                <button name="add-item">Add item</button>
+                <button id="delete-btn">Delete list</button>
+            </form>
+            <div>
+            
+                </div>
+        </div>
 
+        <div class="list-items" id="list-items">
+
+        </div>
     </main>
 
     <footer>&copy;2022 Alchemy Software Developer</footer>
